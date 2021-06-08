@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/hotpotcoin/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/hotpotcoin/static/js/main.8ef3c7a5.chunk.js",
-    "main.js.map": "/hotpotcoin/static/js/main.8ef3c7a5.chunk.js.map",
+    "main.js": "/hotpotcoin/static/js/main.4398af57.chunk.js",
+    "main.js.map": "/hotpotcoin/static/js/main.4398af57.chunk.js.map",
     "runtime-main.js": "/hotpotcoin/static/js/runtime-main.ab530380.js",
     "runtime-main.js.map": "/hotpotcoin/static/js/runtime-main.ab530380.js.map",
     "static/css/2.c9d92586.chunk.css": "/hotpotcoin/static/css/2.c9d92586.chunk.css",
-    "static/js/2.af7eaee8.chunk.js": "/hotpotcoin/static/js/2.af7eaee8.chunk.js",
-    "static/js/2.af7eaee8.chunk.js.map": "/hotpotcoin/static/js/2.af7eaee8.chunk.js.map",
+    "static/js/2.e7d7701f.chunk.js": "/hotpotcoin/static/js/2.e7d7701f.chunk.js",
+    "static/js/2.e7d7701f.chunk.js.map": "/hotpotcoin/static/js/2.e7d7701f.chunk.js.map",
     "static/js/3.a8c36d24.chunk.js": "/hotpotcoin/static/js/3.a8c36d24.chunk.js",
     "static/js/3.a8c36d24.chunk.js.map": "/hotpotcoin/static/js/3.a8c36d24.chunk.js.map",
     "index.html": "/hotpotcoin/index.html",
     "static/css/2.c9d92586.chunk.css.map": "/hotpotcoin/static/css/2.c9d92586.chunk.css.map",
     "static/css/main.ab7136cd.chunk.css.map": "/hotpotcoin/static/css/main.ab7136cd.chunk.css.map",
-    "static/js/2.af7eaee8.chunk.js.LICENSE.txt": "/hotpotcoin/static/js/2.af7eaee8.chunk.js.LICENSE.txt",
+    "static/js/2.e7d7701f.chunk.js.LICENSE.txt": "/hotpotcoin/static/js/2.e7d7701f.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/hotpotcoin/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ab530380.js",
     "static/css/2.c9d92586.chunk.css",
-    "static/js/2.af7eaee8.chunk.js",
+    "static/js/2.e7d7701f.chunk.js",
     "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.8ef3c7a5.chunk.js"
+    "static/js/main.4398af57.chunk.js"
   ]
 }
