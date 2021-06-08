@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "@openzeppelin/test-helpers": "^0.5.11"
+  },
+  "dependencies": {
+    "@walletconnect/client": "^1.4.1",
+    "@walletconnect/qrcode-modal": "^1.4.1"
   }
 }
