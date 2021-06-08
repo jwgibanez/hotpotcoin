@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/hotpotcoin/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/hotpotcoin/static/js/main.ea18ad42.chunk.js",
-    "main.js.map": "/hotpotcoin/static/js/main.ea18ad42.chunk.js.map",
+    "main.js": "/hotpotcoin/static/js/main.41a4ab30.chunk.js",
+    "main.js.map": "/hotpotcoin/static/js/main.41a4ab30.chunk.js.map",
     "runtime-main.js": "/hotpotcoin/static/js/runtime-main.2ae4eaed.js",
     "runtime-main.js.map": "/hotpotcoin/static/js/runtime-main.2ae4eaed.js.map",
     "static/css/2.c9d92586.chunk.css": "/hotpotcoin/static/css/2.c9d92586.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.c9d92586.chunk.css",
     "static/js/2.00013b79.chunk.js",
     "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.ea18ad42.chunk.js"
+    "static/js/main.41a4ab30.chunk.js"
   ]
 }
