@@ -70,10 +70,14 @@ function App() {
 
   const init = async () => {
     const provider = await detectEthereumProvider();
-    web3 = new Web3(provider);
-    token = new web3.eth.Contract(hotpotAbi,'0xD67b8B287aBDcb1F65b1477B5Fb3723a79710cE5');
-    airdrop = new web3.eth.Contract(airdropAbi,'0xc1c412260c017c7da3dD3499e562447553f0a9b2');
     if (provider) {
+      web3 = new Web3(provider);
+      // token = new web3.eth.Contract(hotpotAbi,'0xD67b8B287aBDcb1F65b1477B5Fb3723a79710cE5');
+      // airdrop = new web3.eth.Contract(airdropAbi,'0x74e039AD6AF2D375874e45Ac9E09840227b600d2');
+      // test
+      token = new web3.eth.Contract(hotpotAbi,'0x720f546e672c6B612aF334220d748478eD98361E');
+      airdrop = new web3.eth.Contract(airdropAbi,'0xC995c46E77a7e4FB7622E10521E23b06d2dF2058');
+      // Get account 0
       provider
         .request({ method: 'eth_accounts' })
         .then((accounts) => {
@@ -87,13 +91,8 @@ function App() {
               setAirdropBalance(balance);
               renderAirdropInfo();
             });
-            // Get amount held by accounts
-            token.methods.balanceOf(acc).call()
-            .then((balance) => {
-              setWalletBalance(balance);
-              renderWalletBalance();
-              renderClaimButton();
-            });
+            getAmountHeldByAccount(acc);
+            checkIsClaimedBy(acc);
           } else {
             //walletConnect();
           }
@@ -110,6 +109,23 @@ function App() {
   $(function() {
     init();
   });
+
+  function getAmountHeldByAccount(account) {
+    // Get amount held by account
+    token.methods.balanceOf(account).call()
+    .then((balance) => {
+      setWalletBalance(balance);
+      renderWalletBalance();
+    });
+  }
+
+  function checkIsClaimedBy(account) {
+    // Check if address has received airdrop
+    airdrop.methods.isClaimedBy(account).call()
+    .then((claimed) => {
+      renderClaimButton(claimed);
+    })
+  }
 
   function renderConnectionInfo() {
     ReactDOM.render(
@@ -138,19 +154,29 @@ function App() {
     );
   }
 
-  function renderClaimButton() {
+  function renderClaimButton(claimed) {
     ReactDOM.render(
       <div className="d-grid gap-2">
-        <button type="button" className="btn btn-primary btn-lg" onClick={claim}>
-          Claim 1,000,000 HOTPOT
+        <button type="button" className={'btn btn-lg ' + (claimed ? 'btn-secondary' : 'btn-primary') } disabled={claimed} onClick={claim}>
+          {claimed ? 'Address has claimed airdrop.' : 'Claim 1,000,000 HOTPOT'}
         </button>
+        <p><small>*Airdrop can only be claimed once per address.</small></p>
       </div>,
       document.getElementById('claim-info')
     );
   }
 
   function claim() {
-    alert('TODO');
+    airdrop.methods.claim().send({from: account})
+    .then(function (result) {
+      alert('Airdrop claimed successfully.');
+      getAmountHeldByAccount(account);
+      checkIsClaimedBy(account);
+    }, function (error) {
+      alert('Airdrop claim failed. Please check your transaction history.');
+      getAmountHeldByAccount(account);
+      checkIsClaimedBy(account);
+    });
   }
 
   return (
