@@ -85,14 +85,7 @@ function App() {
           if (acc) {
             setAccount(acc);
             setDispAccount(acc.substring(0, 5) + '...' + acc.substring(acc.length-3, acc.length));
-            // Get airdop balance
-            airdrop.methods.getBalance().call()
-            .then((balance) => {
-              setAirdropBalance(balance);
-              renderAirdropInfo();
-            });
-            getAmountHeldByAccount(acc);
-            checkIsClaimedBy(acc);
+            refresh(acc);
           } else {
             //walletConnect();
           }
@@ -109,6 +102,20 @@ function App() {
   $(function() {
     init();
   });
+
+  function refresh(account) {
+    getAirdropBalance();
+    getAmountHeldByAccount(account);
+    checkIsClaimedBy(account);
+  }
+
+  function getAirdropBalance() {
+    airdrop.methods.getBalance().call()
+    .then((balance) => {
+      setAirdropBalance(balance);
+      renderAirdropInfo();
+    });
+  }
 
   function getAmountHeldByAccount(account) {
     // Get amount held by account
@@ -170,12 +177,10 @@ function App() {
     airdrop.methods.claim().send({from: account})
     .then(function (result) {
       alert('Airdrop claimed successfully.');
-      getAmountHeldByAccount(account);
-      checkIsClaimedBy(account);
+      refresh(account);
     }, function (error) {
       alert('Airdrop claim failed. Please check your transaction history.');
-      getAmountHeldByAccount(account);
-      checkIsClaimedBy(account);
+      refresh(account);
     });
   }
 
