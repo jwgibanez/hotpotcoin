@@ -100,6 +100,27 @@ function App() {
     init();
   });
 
+  function connect() {
+    if (!account) {
+      const isMetaMaskInstalled = () => {
+        const { ethereum } = window;
+        return Boolean(ethereum && ethereum.isMetaMask);
+      };
+      if (!isMetaMaskInstalled()) {
+        alert('Please install MetaMask to connect.');
+      } else {
+        window.ethereum.request({ method: 'eth_requestAccounts' })
+        .then(
+          function (result) {
+            init();
+          }, function (error) {
+            alert('Could not connect to MetaMask.');
+          }
+        );
+      }
+    }
+  }
+
   function refresh(account) {
     getAirdropBalance();
     getAmountHeldByAccount(account);
@@ -187,7 +208,7 @@ function App() {
         <div className="container-fluid">
           <a className="navbar-brand" href="#">HOTPOT COIN</a>
           <button type="button"
-            className={account ? 'btn btn-success' : 'btn btn-warning'}>{dispAccount}</button>
+            className={account ? 'btn btn-success' : 'btn btn-warning'} onClick={connect}>{dispAccount}</button>
         </div>
       </nav>
       <div id='connection-info'>
