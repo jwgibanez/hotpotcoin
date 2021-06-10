@@ -10,7 +10,7 @@ Total/Max Suppy: 1,000,000,000,000,000 HOTPOT
 
 Allocation: 200,000,000,000,000 HOTPOT (20% of max supply)
 
-Contract: [0xc1c412260c017c7da3dD3499e562447553f0a9b2](https://bscscan.com/address/0xc1c412260c017c7da3dD3499e562447553f0a9b2/)
+Contract: [0x74e039AD6AF2D375874e45Ac9E09840227b600d2](https://bscscan.com/address/0x74e039AD6AF2D375874e45Ac9E09840227b600d2/)
 
 Claim Amount: 1,000,000 HOTPOT
 

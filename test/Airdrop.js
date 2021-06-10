@@ -75,6 +75,8 @@ contract('Airdrop', function (accounts) {
     assert.equal(await token.allowance(accounts[0], airdrop.address), depositAmount, "Allowance is not ${depositAmount}");
     await airdrop.deposit(depositAmount);    assert.equal(await token.balanceOf(airdrop.address), depositAmount, "Balance doesn't match");
     assert.equal(await airdrop.getBalance(), depositAmount, "Balance doesn't match");
+    let isClaimed = await airdrop.isClaimedBy(accounts[1]);
+    assert.equal(isClaimed, false, "Should not be marked claimed yet");
     const originalBalance = await token.balanceOf(accounts[1]);
     expectEvent(
       await airdrop.claim({ from: accounts[1] }),
@@ -86,6 +88,8 @@ contract('Airdrop', function (accounts) {
     );
     let b = await token.balanceOf(accounts[1]);
     assert.equal(b.toString(), web3.utils.toWei("1000000000"), "Claim failed");
+    isClaimed = await airdrop.isClaimedBy(accounts[1]);
+    assert.equal(isClaimed, true, "Should be marked claimed");
     await expectRevert(
       airdrop.claim({ from: accounts[1] }),
       'address already claimed airdrop'
@@ -103,6 +107,8 @@ contract('Airdrop', function (accounts) {
     await airdrop.deposit(depositAmount);
     assert.equal(await token.balanceOf(airdrop.address), depositAmount, "Balance doesn't match");
     assert.equal(await airdrop.getBalance(), depositAmount, "Balance doesn't match");
+    let isClaimed = await airdrop.isClaimedBy(accounts[1]);
+    assert.equal(isClaimed, false, "Should not be marked claimed yet");
     const originalBalance = await token.balanceOf(accounts[1]);
     expectEvent(
       await airdrop.gift(accounts[1]),
@@ -115,6 +121,8 @@ contract('Airdrop', function (accounts) {
     );
     let b = await token.balanceOf(accounts[1]);
     assert.equal(b.toString(), web3.utils.toWei("1000000000"), "Claim failed");
+    isClaimed = await airdrop.isClaimedBy(accounts[1]);
+    assert.equal(isClaimed, true, "Should be marked claimed");
     await expectRevert(
       airdrop.gift(accounts[1]),
       'address already claimed airdrop'

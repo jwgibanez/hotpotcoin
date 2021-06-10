@@ -92,8 +92,19 @@ contract Airdrop is Ownable {
     return true;
   }
 
+  /**
+   * @dev Returns the balance held by this contract
+   */
   function getBalance() external view returns (uint256) {
     return IBEP20(_token).balanceOf(address(this));
+  }
+
+  /**
+   * @dev Checks if the address has already received airdrop
+   */
+  function isClaimedBy(address queryAddress) external view returns (bool) {
+    require(Address.isContract(queryAddress) == false, 'query address must not be a contract');
+    return _beneficiaries[queryAddress];
   }
 
   /**
