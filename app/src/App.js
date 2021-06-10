@@ -72,11 +72,8 @@ function App() {
     const provider = await detectEthereumProvider();
     if (provider) {
       web3 = new Web3(provider);
-      // token = new web3.eth.Contract(hotpotAbi,'0xD67b8B287aBDcb1F65b1477B5Fb3723a79710cE5');
-      // airdrop = new web3.eth.Contract(airdropAbi,'0x74e039AD6AF2D375874e45Ac9E09840227b600d2');
-      // test
-      token = new web3.eth.Contract(hotpotAbi,'0x720f546e672c6B612aF334220d748478eD98361E');
-      airdrop = new web3.eth.Contract(airdropAbi,'0xC995c46E77a7e4FB7622E10521E23b06d2dF2058');
+      token = new web3.eth.Contract(hotpotAbi,'0xD67b8B287aBDcb1F65b1477B5Fb3723a79710cE5');
+      airdrop = new web3.eth.Contract(airdropAbi,'0x74e039AD6AF2D375874e45Ac9E09840227b600d2');
       // Get account 0
       provider
         .request({ method: 'eth_accounts' })
